@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    background-color: skyblue;
+}
+
+header,
+.content-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: lightyellow;
+    padding: 2%;
+    margin: 2%;
+    border-radius: 5px;
+    font-family: 'Play', sans-serif;
+    font-size: 1.2em;
+}
+.content-area {
+    height: 70%;
+}
