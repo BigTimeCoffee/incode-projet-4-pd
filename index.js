@@ -1,10 +1,30 @@
 const express = require('express')
 const app = express()
+const port = 3000
 const data = require('./data')
 const crypto = require('crypto')
-const port = 1000
 const handlebars = require('express-handlebars')
-const bodyParser = require('body-parser')
+
+require('dotenv').config() // process.env.filename to access the variable
+
+const password = process.env.PASSWORD
+
+const mysql = require('mysql2')
+const connection = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: password,
+    database: 'incode_project_3',
+    port: 3306,
+})
+
+connection.connect(function (err) {
+    if (err) {
+        throw err
+    } else {
+        console.log('Connected')
+    }
+}) // This function checks if we are connected to our database.
 
 app.set('view engine', 'hbs')
 app.engine(
@@ -64,9 +84,9 @@ app.post('/users/new', (req, res) => {
 app.get('/schedules/new', (req, res) => {
     let usersData = data.users
     console.log(usersData)
-    for (i = 0; i < usersData.length; i++) {
-        usersData[i].id = i
-    }
+    //for (i = 0; i < usersData.length; i++) {
+    //    usersData[i].id = i
+
     console.log('Users after for', usersData)
     res.render('scheduleForm', { layout: 'index', usersData })
 })
