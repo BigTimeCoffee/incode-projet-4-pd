@@ -118,7 +118,7 @@ app.post('/schedules/new', (req, res) => {
         if (err) throw err
         console.log('User schedule is inserted successfully ')
     })
-    res.redirect('/')
+    res.redirect('/schedules')
 })
 
 app.get('/users/:id', (req, res) => {
