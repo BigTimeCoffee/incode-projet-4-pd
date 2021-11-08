@@ -1,9 +1,10 @@
 <form action='/schedules/new' method='POST'>
     <select name='user_id'>
-        {{#each usersData as |user userId|}}
-            <option value={{user.id}}>{{user.firstname}}
-                {{user.lastname}}</option>
+        {{#each userData}}
+            <option value={{this.id}}>{{this.first_name}}
+            </option>
         {{/each}}
+
     </select>
 
     <br />
@@ -19,9 +20,9 @@
         <option value='7'>Sunday</option>
     </select>
     <br /><br />
-    <input type='text' name='start_at' placeholder='Start' />
+    <input type='text' name='start_time' placeholder='Start YYYY-MM-DD HH:MM' />
     <br /><br />
-    <input type='text' name='end_at' placeholder='End' />
+    <input type='text' name='end_time' placeholder='End YYYY-MM-DD HH:MM' />
     <br /><br />
     <input type='submit' value='Submit' />
 </form>
